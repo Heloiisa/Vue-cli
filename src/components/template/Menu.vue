@@ -2,10 +2,15 @@
     <aside class="menu" v-show="isMenuVisible">
       <b-list-group>
             <b-list-group-item class="menu"  button > <h4 class="branco" >Heloisa Silva</h4><small class="branco"> heloisa.silva@cartoriosdeprotesto.org.br</small></b-list-group-item>
-            <b-list-group-item class="menu" variant="light" button href="#"><font-awesome-icon icon="tachometer-alt"></font-awesome-icon>  Painel de Controle</b-list-group-item>
-            <b-list-group-item class="menu" variant="light" button href="#"><font-awesome-icon icon="user-cog"></font-awesome-icon>  Administração</b-list-group-item>
-            <b-list-group-item class="menu" variant="light" button href="#"><font-awesome-icon icon="comments"></font-awesome-icon>  Comunicados</b-list-group-item>
-            <b-list-group-item class="menu" variant="light" button href="#"><font-awesome-icon icon="address-book"></font-awesome-icon>  Teste</b-list-group-item>
+            <a href="/home" class="menu" variant="light" button ><font-awesome-icon icon="tachometer-alt"></font-awesome-icon>  Painel de Controle</a>
+            <a href="/admin" class="menu" variant="light" button ><font-awesome-icon icon="user-cog"></font-awesome-icon>  Administração</a>
+            <!-- <ul>
+                <li><a href="/admin" class="menu" variant="light" button><font-awesome-icon icon="angle-double-right"></font-awesome-icon> Empresas</a></li>
+                <li><a href="/eventos" class="menu" variant="light" button><font-awesome-icon icon="angle-double-right"></font-awesome-icon> Usuários</a></li>
+
+            </ul> -->
+            <a href="/comunicado" class="menu" variant="light" button ><font-awesome-icon icon="comments"></font-awesome-icon>  Comunicados</a>
+            <a href="/evento" class="menu" variant="light" button><font-awesome-icon icon="address-book"></font-awesome-icon>  Eventos</a>
     </b-list-group>
         <Tree :data="treeData" :options="treeOptions"
             :filter="treeFilter" ref="tree" />
@@ -59,7 +64,7 @@ export default {
         grid-area: menu;
         background: linear-gradient(to right, #232526, #414345);
 
-        display: flex;
+        display: block;
         flex-direction: column;
         flex-wrap: wrap;
     }
@@ -112,6 +117,13 @@ export default {
     }
     .branco{
         color: white;
+    }
+    a {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
     }
    
 </style>

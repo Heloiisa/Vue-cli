@@ -1,18 +1,6 @@
 <template>
-    <div class="article-admin">
+    <div class="evento">
         <b-form>
-            <input id="article-id" type="hidden" v-model="article.id" />
-            <b-form-group label="Titulo:" label-for="article-titulo">
-                <b-form-input id="article-titulo" type="text"
-                    v-model="article.name" required
-                    :readonly="mode === 'remove'"
-                    placeholder="Informe o Título..." />
-            </b-form-group>
-            <b-form-group v-if="mode === 'save'" 
-                label="Empresa:" label-for="article-categoryId">
-                <b-form-select id="article-categoryId"
-                    :options="categories" v-model="article.categoryId" />
-            </b-form-group>
             <b-row>
             <b-col sm="6">  
             <b-form-group label="Periodo Inicial:" label-for="article-inicial">
@@ -26,18 +14,16 @@
                     v-model="article.final" required/>
             </b-form-group> 
             </b-col>
-            </b-row>               
-            <b-form-group v-if="mode === 'save'"
-                label="Conteúdo" label-for="article-content">
-                <VueEditor v-model="article.content"
-                    placeholder="Informe o Conteúdo..." />
-            </b-form-group>
+            </b-row>     
+              <b-form-group v-if="mode === 'save'" 
+                label="Evento:" label-for="event-categoryId">
+                <b-form-select id="event-categoryId"
+                    :options="categories" v-model="article.categoryId" />
+            </b-form-group>          
+          
             <b-button variant="primary" v-if="mode === 'save'"
-                @click="save">Salvar</b-button>
-            <b-button variant="danger" v-if="mode === 'remove'"
-                @click="remove">Excluir</b-button>
-            <b-button class="ml-2" @click="reset">Cancelar</b-button>
-        </b-form>
+                @click="save">Pesquisar</b-button>
+           </b-form>
         <hr>
         <b-table hover striped :items="articles" :fields="fields">
             <template slot="actions" slot-scope="data">

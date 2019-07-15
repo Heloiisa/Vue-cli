@@ -8,7 +8,7 @@
     <b-card variant="danger"
       header="REMESSA"
       header-tag="header"
-      header-bg-variant="primary"
+      header-bg-variant="az1"
       footer="Saiba mais..."
       footer-tag="footer"
       footer-bg-variant="blue"
@@ -141,8 +141,7 @@ export default {
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    .blue{
-      background: #279FE0;
-    }
-  
+  .az1{
+    background-color: #1E91CF;
+  }
 </style>

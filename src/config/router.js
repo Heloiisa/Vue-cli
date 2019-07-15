@@ -3,9 +3,13 @@ import VueRouter from 'vue-router'
 
 import Home from '@/components/home/Home'
 import AdminPages from '@/components/admin/AdminPages'
-import ArticlesByCategory from '@/components/article/ArticlesByCategory'
-import ArticleById from '@/components/article/ArticleById'
 import Auth from '@/components/auth/Auth'
+import EventoAdmin from '@/components/evento/EventoAdmin'
+import ComunicadoAdmin from '@/components/Comunicado/ComunicadoAdmin'
+import GrupoAdmin from '@/components/grupoAcesso/GrupoAdmin'
+
+
+
 
 import { userKey } from '@/global'
 
@@ -21,18 +25,27 @@ const routes = [{
     component: AdminPages,
     meta: { requiresAdmin: false }
 }, {
-    name: 'articlesByCategory',
-    path: '/categories/:id/articles',
-    component: ArticlesByCategory
-}, {
-    name: 'articleById',
-    path: '/articles/:id',
-    component: ArticleById
-}, {
+ 
+    name: 'eventoAdmin',
+    path: '/evento',
+    component: EventoAdmin
+},
+{
+ 
+    name: 'GrupoAdmin',
+    path: '/novogrupo',
+    component: GrupoAdmin
+},
+{
+    name: 'comunicadoAdmin',
+    path: '/comunicado',
+    component: ComunicadoAdmin
+},  {
     name: 'home',
     path: '/home',
     component: Home
 }]
+
 
 const router = new VueRouter({
     mode: 'history',
