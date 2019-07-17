@@ -4,11 +4,11 @@
         <div class="admin-pages-tabs">
             <b-card no-body>
                 <b-tabs card>
-                    <b-tab title="Cadastro de Empresas">
-                        <CategoryAdmin />
+                    <b-tab b title="Cadastro de Empresas">
+                        <EmpresaAdmin />
                     </b-tab>
                     <b-tab title="Cadastro de Usuários">
-                        <UserAdmin />
+                        <UsuarioAdmin />
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -18,13 +18,13 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
-import CategoryAdmin from './CategoryAdmin'
-import UserAdmin from './UserAdmin'
+import EmpresaAdmin from './EmpresaAdmin'
+import UsuarioAdmin from './UsuarioAdmin'
 
 
 export default {
     name: 'AdminPages',
-    components: { PageTitle, CategoryAdmin, UserAdmin }
+    components: { PageTitle, EmpresaAdmin, UsuarioAdmin }
 }
 </script>
 

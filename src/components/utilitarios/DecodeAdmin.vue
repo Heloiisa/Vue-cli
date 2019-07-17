@@ -1,11 +1,11 @@
 <template>
-    <div class="grupo-admin">
-        <PageTitle icon="fa fa-cogs" main="Administração - Grupos de Acesso" />
+    <div class="decode-admin">
+        <PageTitle icon="fa fa-cogs" main="Utilitários - Codificação" />
         <div class="admin-pages-tabs">
             <b-card no-body>
                 <b-tabs card>
-                    <b-tab title="Novo Grupo" active>
-                        <NovoGrupo />
+                    <b-tab title="Decode" active>
+                        <Decode />
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -15,12 +15,12 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
-import NovoGrupo from './NovoGrupo'
+import Decode from './Decode'
 
 
 export default {
-    name: 'EventoAdmin',
-    components: { PageTitle, NovoGrupo }
+    name: 'DecodeAdmin',
+    components: { PageTitle, Decode }
 }
 </script>
 

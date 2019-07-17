@@ -1,11 +1,11 @@
 <template>
-    <div class="grupo-admin">
-        <PageTitle icon="fa fa-cogs" main="Administração - Grupos de Acesso" />
+    <div class="admin-pages">
+        <PageTitle icon="fa fa-cogs" main="Administração - Configurações" />
         <div class="admin-pages-tabs">
             <b-card no-body>
                 <b-tabs card>
-                    <b-tab title="Novo Grupo" active>
-                        <NovoGrupo />
+                    <b-tab title="Informações Gerais">
+                        <InforGerais />
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -15,12 +15,11 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
-import NovoGrupo from './NovoGrupo'
-
+import InforGerais from './InforGerais'
 
 export default {
-    name: 'EventoAdmin',
-    components: { PageTitle, NovoGrupo }
+    name: 'InforAdmin',
+    components: { PageTitle, InforGerais }
 }
 </script>
 

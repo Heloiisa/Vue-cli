@@ -4,13 +4,14 @@
             <b-list-group-item class="menu"  button > <h4 class="branco" >Heloisa Silva</h4><small class="branco"> heloisa.silva@cartoriosdeprotesto.org.br</small></b-list-group-item>
             <a href="/home" class="menu" variant="light" button ><font-awesome-icon icon="tachometer-alt"></font-awesome-icon>  Painel de Controle</a>
             <a href="/admin" class="menu" variant="light" button ><font-awesome-icon icon="user-cog"></font-awesome-icon>  Administração</a>
-            <!-- <ul>
-                <li><a href="/admin" class="menu" variant="light" button><font-awesome-icon icon="angle-double-right"></font-awesome-icon> Empresas</a></li>
-                <li><a href="/eventos" class="menu" variant="light" button><font-awesome-icon icon="angle-double-right"></font-awesome-icon> Usuários</a></li>
-
-            </ul> -->
             <a href="/comunicado" class="menu" variant="light" button ><font-awesome-icon icon="comments"></font-awesome-icon>  Comunicados</a>
-            <a href="/evento" class="menu" variant="light" button><font-awesome-icon icon="address-book"></font-awesome-icon>  Eventos</a>
+            <a href="/evento" class="menu" variant="light" button><font-awesome-icon icon="calendar-alt"></font-awesome-icon>  Eventos</a>
+            <a href="/novogrupo" class="menu" variant="light" button><font-awesome-icon icon="users"></font-awesome-icon>  Grupo de Acesso</a>
+            <a href="/decode" class="menu" variant="light" button><font-awesome-icon icon="database"></font-awesome-icon>  Decode</a>
+            <a href="/config" class="menu" variant="light" button><font-awesome-icon icon="cogs"></font-awesome-icon>  Configurações</a>
+
+
+
     </b-list-group>
         <Tree :data="treeData" :options="treeOptions"
             :filter="treeFilter" ref="tree" />

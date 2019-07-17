@@ -11,13 +11,21 @@
             <input v-if="showSignup" v-model="user.confirmPassword"
                 type="password" placeholder="Confirme a Senha">
 
-            <button v-if="showSignup" @click="signup">Registrar</button>
-            <button v-else @click="signin">Entrar</button>
+            <button v-b-modal.modalPopover v-if="showSignup" @click="signup" >Registrar</button>
+            <button v-b-modal.modalPopover v-else @click="signin">Entrar</button>
 
             <a href @click.prevent="showSignup = !showSignup">
                 <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
-                <span v-else>Não tem cadastro? Registre-se aqui!</span>
+                <span v-else>Esqueci minha senha</span>
             </a>
+            <div>
+  <b-modal id="modalPopover" title="Comunicado Importante" ok-only>
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non sem sit amet augue fringilla dignissim. Donec congue metus in dictum molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </p>
+  </b-modal>
+</div>
         </div>
     </div>
 </template>
@@ -27,7 +35,7 @@ import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
 
 export default {
-    name: 'Auth',
+    name: 'Login',
     data: function() {
         return {
             showSignup: false,
@@ -67,8 +75,8 @@ export default {
 
     .auth-modal {
         background-color: #FFF;
-        width: 350px;
-        padding: 35px;
+        width: 850px;
+        padding: 45px;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 
         display: flex;

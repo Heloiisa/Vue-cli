@@ -3,10 +3,14 @@ import VueRouter from 'vue-router'
 
 import Home from '@/components/home/Home'
 import AdminPages from '@/components/admin/AdminPages'
-import Auth from '@/components/auth/Auth'
+import Login from '@/components/login/Login'
 import EventoAdmin from '@/components/evento/EventoAdmin'
 import ComunicadoAdmin from '@/components/Comunicado/ComunicadoAdmin'
 import GrupoAdmin from '@/components/grupoAcesso/GrupoAdmin'
+import DecodeAdmin from '@/components/utilitarios/DecodeAdmin'
+import InforAdmin from '@/components/configuracoes/InforAdmin'
+
+
 
 
 
@@ -16,9 +20,9 @@ import { userKey } from '@/global'
 Vue.use(VueRouter)
 
 const routes = [{
-    name: 'auth',
+    name: 'login',
     path: '/',
-    component: Auth
+    component: Login
 }, {
     name: 'adminPages',
     path: '/admin',
@@ -36,11 +40,23 @@ const routes = [{
     path: '/novogrupo',
     component: GrupoAdmin
 },
+
 {
     name: 'comunicadoAdmin',
     path: '/comunicado',
     component: ComunicadoAdmin
-},  {
+}, 
+{
+    name: 'DecodeAdmin',
+    path: '/decode',
+    component: DecodeAdmin
+},
+{
+    name: 'InforAdmin',
+    path: '/config',
+    component: InforAdmin
+},
+{
     name: 'home',
     path: '/home',
     component: Home
