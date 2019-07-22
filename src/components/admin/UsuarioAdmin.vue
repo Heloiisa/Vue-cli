@@ -5,24 +5,24 @@
             <b-row>
                 <b-col md="6" sm="12">
                     <b-form-group label="Nome:" label-for="nomeUsuario">
-                        <b-form-input id="nomeUsuario" type="text" v-model="user.name" required :readonly="mode === 'remove'" placeholder="Informe o Nome do Usuário..." />
+                        <b-form-input id="nomeUsuario" type="text" v-model="nm_usuario" required :readonly="mode === 'remove'" placeholder="Informe o Nome do Usuário..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="CPF:" label-for="user-cpf">
-                        <b-form-input id="user-cpf" type="text" v-model="user.email" required :readonly="mode === 'remove'" placeholder="Informe o Nº do CPF..." />
+                        <b-form-input id="user-cpf" type="text" v-model="nr_cpf" required :readonly="mode === 'remove'" placeholder="Informe o Nº do CPF..." />
                     </b-form-group>
                 </b-col>
             </b-row>
             <b-row>
                 <b-col md="6" sm="12">
                     <b-form-group label="Email:" label-for="nomeEmail">
-                        <b-form-input id="nomeEmail" type="text" v-model="user.name" required :readonly="mode === 'remove'" placeholder="Informe o E-mail..." />
+                        <b-form-input id="nomeEmail" type="text" v-model="nm_email" required :readonly="mode === 'remove'" placeholder="Informe o E-mail..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="Confirmar E-mail:" label-for="nomeConfEmail">
-                        <b-form-input id="nomeConfEmail" type="text" v-model="user.email" required :readonly="mode === 'remove'" placeholder="Confirme o E-mail..." />
+                        <b-form-input id="nomeConfEmail" type="text" v-model="nm_conf_email" required :readonly="mode === 'remove'" placeholder="Confirme o E-mail..." />
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -30,17 +30,17 @@
             <b-row v-show="mode === 'save'">
                 <b-col md="6" sm="12">
                     <b-form-group label="Senha:" label-for="nomeSenha">
-                        <b-form-input id="nomeSenha" type="password" v-model="user.password" required placeholder="Informe a Senha do Usuário..." />
+                        <b-form-input id="nomeSenha" type="password" v-model="nm_senha" required placeholder="Informe a Senha do Usuário..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="Confirmar  Senha:" label-for="nomeConfSenha">
-                        <b-form-input id="nomeConfSenha" type="password" v-model="user.confirmPassword" required placeholder="Confirme a Senha do Usuário..." />
+                        <b-form-input id="nomeConfSenha" type="password" v-model="nm_conf_senha" required placeholder="Confirme a Senha do Usuário..." />
                     </b-form-group>
                 </b-col>
             </b-row>
 
-            <b-form-checkbox id="user-admin" v-show="mode === 'save'" v-model="user.admin" class="mt-3 mb-3">
+            <b-form-checkbox id="user-admin" v-show="mode === 'save'" v-model="nm_usuario1" class="mt-3 mb-3">
                 Administrador
             </b-form-checkbox>
             <b-row>
@@ -57,10 +57,10 @@
         <b-table hover striped :items="users" :fields="fields">
             <template slot="actions" slot-scope="data">
                 <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
-                    <i class="fa fa-pencil"></i>
+                     <font-awesome-icon icon="pencil-alt" ></font-awesome-icon>
                 </b-button>
                 <b-button variant="danger" @click="loadUser(data.item, 'remove')">
-                    <i class="fa fa-trash"></i>
+                     <font-awesome-icon icon="trash-alt" ></font-awesome-icon>
                 </b-button>
             </template>
         </b-table>
@@ -78,23 +78,27 @@
         name: 'UserAdmin',
         data: function() {
             return {
+                nm_usuario:'',
+                nm_email:'',
+                nm_senha:'',
+                nr_cpf:'',
                 mode: 'save',
                 user: {},
                 users: [],
                 fields: [{
-                    key: 'id',
+                    key: 'cd_usuario',
                     label: 'Código',
                     sortable: true
                 }, {
-                    key: 'name',
+                    key: 'nm_usuario',
                     label: 'Nome',
                     sortable: true
                 }, {
-                    key: 'email',
+                    key: 'nm_email',
                     label: 'E-mail',
                     sortable: true
                 }, {
-                    key: 'admin',
+                    key: 'nm_usuario',
                     label: 'Administrador',
                     sortable: true,
                     formatter: value => value ? 'Sim' : 'Não'
@@ -106,7 +110,7 @@
         },
         methods: {
             loadUsers() {
-                    const url = `${baseApiUrl}/users`
+                    const url = `${baseApiUrl}/api/usuarios`
                     axios.get(url).then(res => {
                         this.users = res.data
                     })
@@ -119,7 +123,7 @@
                 save() {
                     const method = this.user.id ? 'put' : 'post'
                     const id = this.user.id ? `/${this.user.id}` : ''
-                    axios[method](`${baseApiUrl}/users${id}`, this.user)
+                    axios[method](`${baseApiUrl}/cd_empresa${id}`, this.user)
                         .then(() => {
                             this.$toasted.global.defaultSuccess()
                             this.reset()
