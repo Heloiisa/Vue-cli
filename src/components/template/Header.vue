@@ -6,8 +6,24 @@
         <h1 class="title">
             <router-link to="/">{{ title }}</router-link>
         </h1>
-        <font-awesome-icon icon="star"></font-awesome-icon>
-        <UserDropdown v-if="!hideUserDropdown" />
+        
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex text-white">
+            <li class="nav-item">
+                <a class="nav-link"><p>Último acesso: 12:23</p></a>
+            </li>
+            <li class="nav-item px-2">
+                <a class="nav-link"><font-awesome-icon icon="star"></font-awesome-icon></a>
+            </li>
+            <li class="nav-item px-2">
+                <a class="nav-link"><font-awesome-icon icon="user"></font-awesome-icon></a>
+            </li>
+            <li class="nav-item px-2">
+                <a class="nav-link"><font-awesome-icon icon="user-circle"></font-awesome-icon></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"> <UserDropdown v-if="!hideUserDropdown" /></a>
+            </li>
+        </ul>
     </header>
 </template>
 

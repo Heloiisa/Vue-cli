@@ -1,27 +1,27 @@
 <template>
     <div class="comunicado-admin">
         <b-form>
-            <input id="article-id" type="hidden" v-model="article.id" />
+            <input id="article-id" type="hidden" v-model="article.cd_sistema_comunicado" />
             <b-form-group label="Titulo:" label-for="article-titulo">
-                <b-form-input id="article-titulo" type="text" v-model="article.name" required :readonly="mode === 'remove'" placeholder="Informe o Título..." />
+                <b-form-input id="article-titulo" type="text" v-model="article.nm_titulo" required :readonly="mode === 'remove'" placeholder="Informe o Título..." />
             </b-form-group>
-            <b-form-group v-if="mode === 'save'" label="Empresa:" label-for="article-categoryId">
-                <b-form-select id="article-categoryId" :options="categories" v-model="article.categoryId" />
+            <b-form-group label="Empresa:" label-for="article-categoryId">
+                <b-form-select id="article-categoryId" :options="options" v-model="selected" />
             </b-form-group>
             <b-row>
                 <b-col sm="6">
                     <b-form-group label="Periodo Inicial:" label-for="article-inicial">
-                        <b-form-input id="article-inicial" type="date" v-model="article.inicial" required />
+                        <b-form-input id="article-inicial" type="date" v-model="article.dt_inicio" required />
                     </b-form-group>
                 </b-col>
                 <b-col sm="6">
                     <b-form-group label="Periodo Final:" label-for="article-final">
-                        <b-form-input id="article-final" type="date" v-model="article.final" required/>
+                        <b-form-input id="article-final" type="date" v-model="article.dt_fim" required/>
                     </b-form-group>
                 </b-col>
             </b-row>
             <b-form-group v-if="mode === 'save'" label="Conteúdo" label-for="article-content">
-                <VueEditor v-model="article.content" placeholder="Informe o Conteúdo..." />
+                <VueEditor v-model="article.ds_comunicado" placeholder="Informe o Conteúdo..." />
             </b-form-group>
             <div class="text-sm-right col-sm3">
                 <b-button variant="primary" v-if="mode === 'save'" @click="save">Salvar</b-button>
@@ -33,10 +33,10 @@
         <b-table hover striped :items="articles" :fields="fields">
             <template slot="actions" slot-scope="data">
                 <b-button variant="warning" @click="loadArticle(data.item)" class="mr-2">
-                    <i class="fa fa-pencil"></i>
+                    <font-awesome-icon icon="pencil-alt" ></font-awesome-icon>
                 </b-button>
                 <b-button variant="danger" @click="loadArticle(data.item, 'remove')">
-                    <i class="fa fa-trash"></i>
+                     <font-awesome-icon icon="trash-alt" ></font-awesome-icon>
                 </b-button>
             </template>
         </b-table>
@@ -62,8 +62,21 @@
         },
         data: function() {
             return {
+                article: {
+                    nm_titulo: "",
+                    dt_inicio: "",
+                    dt_fim: "",
+                    ds_comunicado: ""
+                },
+        selected: null,
+        options: [
+          { value: null, text: 'Selecione uma empresa' },
+          { value: '1', text: 'CRA NACIONAL' },
+          { value: '2', text: 'Empresa Qualquer ab' },
+
+        ],
+        
                 mode: 'save',
-                article: {},
                 articles: [],
                 categories: [],
                 users: [],
@@ -71,16 +84,21 @@
                 limit: 0,
                 count: 0,
                 fields: [{
-                    key: 'id',
+                    key: 'cd_sistema_comunicado',
                     label: 'Código',
                     sortable: true
                 }, {
-                    key: 'titulo',
+                    key: 'nm_titulo',
                     label: 'Título',
                     sortable: true
                 }, {
-                    key: 'description',
-                    label: 'Descrição',
+                    key: 'dt_inicio',
+                    label: 'Data Inicio',
+                    sortable: true
+                },
+                {
+                    key: 'dt_fim',
+                    label: 'Data Final',
                     sortable: true
                 }, {
                     key: 'actions',
@@ -90,11 +108,10 @@
         },
         methods: {
             loadArticles() {
-                    const url = `${baseApiUrl}/articles?page=${this.page}`
+                    var self = this;
+                    const url = `${baseApiUrl}/api/comunicados`
                     axios.get(url).then(res => {
-                        this.articles = res.data.data
-                        this.count = res.data.count
-                        this.limit = res.data.limit
+                        self.articles = res.data;
                     })
                 },
                 reset() {
@@ -103,9 +120,10 @@
                     this.loadArticles()
                 },
                 save() {
-                    const method = this.article.id ? 'put' : 'post'
-                    const id = this.article.id ? `/${this.article.id}` : ''
-                    axios[method](`${baseApiUrl}/articles${id}`, this.article)
+                    const method = this.article.cd_sistema_comunicado ? 'put' : 'post'
+                    const cd_sistema_comunicado = this.article.cd_sistema_comunicado
+                     ? `${this.article.cd_sistema_comunicado}` : '';
+                    axios[method](`${baseApiUrl}/api/comunicado/${cd_sistema_comunicado}`, this.article)
                         .then(() => {
                             this.$toasted.global.defaultSuccess()
                             this.reset()
@@ -113,8 +131,8 @@
                         .catch(showError)
                 },
                 remove() {
-                    const id = this.article.id
-                    axios.delete(`${baseApiUrl}/articles/${id}`)
+                    const cd_sistema_comunicado = this.article.cd_sistema_comunicado
+                    axios.delete(`${baseApiUrl}/api/comunicado/${cd_sistema_comunicado}`)
                         .then(() => {
                             this.$toasted.global.defaultSuccess()
                             this.reset()
@@ -122,44 +140,43 @@
                         .catch(showError)
                 },
                 loadArticle(article, mode = 'save') {
-                    this.mode = mode
-                    axios.get(`${baseApiUrl}/articles/${article.id}`)
-                        .then(res => this.article = res.data)
+                    this.mode = mode;
+                    this.article = { ...article };
                 },
                 loadCategories() {
-                    const url = `${baseApiUrl}/categories`
+                    const url = `${baseApiUrl}/api/empresas`
                     axios.get(url).then(res => {
                         this.categories = res.data.map(category => {
                             return {
-                                value: category.id,
+                                value: category.cd_empresa_pertence,
                                 text: category.path
                             }
                         })
                     })
                 },
                 loadUsers() {
-                    const url = `${baseApiUrl}/users`
+                    const url = `${baseApiUrl}/api/usuarios`
                     axios.get(url).then(res => {
                         this.users = res.data.map(user => {
                             return {
-                                value: user.id,
-                                text: `${user.name} - ${user.email}`
+                                value: user.cd_usuario,
+                                text: `${user.nm_usuario} - ${user.nm_email}`
                             }
                         })
                     })
-                }
         },
-        watch: {
-            page() {
-                this.loadArticles()
-            }
-        },
+    //   watch: {
+    //       page() {
+    //           this.loadArticles()
+    //        }
+    //    },
         mounted() {
             this.loadUsers()
             this.loadCategories()
             this.loadArticles()
         }
     }
+    };
 </script>
 
 <style>

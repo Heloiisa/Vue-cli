@@ -5,24 +5,24 @@
             <b-row>
                 <b-col md="6" sm="12">
                     <b-form-group label="Nome:" label-for="nomeUsuario">
-                        <b-form-input id="nomeUsuario" type="text" v-model="nm_usuario" required :readonly="mode === 'remove'" placeholder="Informe o Nome do Usuário..." />
+                        <b-form-input id="nomeUsuario" type="text" v-model="user.nm_usuario" required :readonly="mode === 'remove'" placeholder="Informe o Nome do Usuário..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="CPF:" label-for="user-cpf">
-                        <b-form-input id="user-cpf" type="text" v-model="nr_cpf" required :readonly="mode === 'remove'" placeholder="Informe o Nº do CPF..." />
+                        <b-form-input id="user-cpf" type="text" v-model="user.nr_cpf" required :readonly="mode === 'remove'" placeholder="Informe o Nº do CPF..." />
                     </b-form-group>
                 </b-col>
             </b-row>
             <b-row>
                 <b-col md="6" sm="12">
                     <b-form-group label="Email:" label-for="nomeEmail">
-                        <b-form-input id="nomeEmail" type="text" v-model="nm_email" required :readonly="mode === 'remove'" placeholder="Informe o E-mail..." />
+                        <b-form-input id="nomeEmail" type="text" v-model="user.nm_email" required :readonly="mode === 'remove'" placeholder="Informe o E-mail..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="Confirmar E-mail:" label-for="nomeConfEmail">
-                        <b-form-input id="nomeConfEmail" type="text" v-model="nm_conf_email" required :readonly="mode === 'remove'" placeholder="Confirme o E-mail..." />
+                        <b-form-input id="nomeConfEmail" type="text" v-model="user.nm_conf_email" required :readonly="mode === 'remove'" placeholder="Confirme o E-mail..." />
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -30,17 +30,44 @@
             <b-row v-show="mode === 'save'">
                 <b-col md="6" sm="12">
                     <b-form-group label="Senha:" label-for="nomeSenha">
-                        <b-form-input id="nomeSenha" type="password" v-model="nm_senha" required placeholder="Informe a Senha do Usuário..." />
+                        <b-form-input id="nomeSenha" type="password" v-model="user.nm_senha" required placeholder="Informe a Senha do Usuário..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="Confirmar  Senha:" label-for="nomeConfSenha">
-                        <b-form-input id="nomeConfSenha" type="password" v-model="nm_conf_senha" required placeholder="Confirme a Senha do Usuário..." />
+                        <b-form-input id="nomeConfSenha" type="password" v-model="user.nm_conf_senha" required placeholder="Confirme a Senha do Usuário..." />
                     </b-form-group>
                 </b-col>
             </b-row>
+            <b-row>
+                <b-col md="6" sm="12">
+                        <b-form-group label="Usuário Ativo:" label-for="idEmpresaTipo">
+                            <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
+                        </b-form-group>
+                    </b-col>
+                <b-col md="6" sm="12">
+                    <b-form-group label="Pertence a Empresa:" label-for="idEmpresaTipo">
+                        <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
+                    </b-form-group>
+                </b-col>      
+            </b-row>        
+            <b-row>
+                <b-col md="6" sm="12">
+                        <b-form-group label="Acesso a URL:" label-for="idEmpresaTipo">
+                            <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
+                        </b-form-group>
+                </b-col>
+                <b-col md="6" sm="12">
+                    <b-form-group label="Tipo Usuário:" label-for="idEmpresaTipo">
+                        <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
+                    </b-form-group>
+                </b-col>      
+            </b-row>  
 
-            <b-form-checkbox id="user-admin" v-show="mode === 'save'" v-model="nm_usuario1" class="mt-3 mb-3">
+
+
+
+            <b-form-checkbox id="user-admin" v-show="mode === 'save'" v-model="user.nm_usuario1" class="mt-3 mb-3">
                 Administrador
             </b-form-checkbox>
             <b-row>
@@ -78,12 +105,13 @@
         name: 'UserAdmin',
         data: function() {
             return {
+                user: {
                 nm_usuario:'',
                 nm_email:'',
                 nm_senha:'',
                 nr_cpf:'',
-                mode: 'save',
-                user: {},
+                },
+                 mode: 'save',
                 users: [],
                 fields: [{
                     key: 'cd_usuario',
@@ -121,9 +149,9 @@
                     this.loadUsers()
                 },
                 save() {
-                    const method = this.user.id ? 'put' : 'post'
-                    const id = this.user.id ? `/${this.user.id}` : ''
-                    axios[method](`${baseApiUrl}/cd_empresa${id}`, this.user)
+                    const method = this.user.cd_usuario ? 'put' : 'post'
+                    const cd_usuario = this.user.cd_usuario ? `${this.user.cd_usuario}` : ''
+                    axios[method](`${baseApiUrl}/api/usuario/${cd_usuario}`, this.user)
                         .then(() => {
                             this.$toasted.global.defaultSuccess()
                             this.reset()
@@ -131,8 +159,8 @@
                         .catch(showError)
                 },
                 remove() {
-                    const id = this.user.id
-                    axios.delete(`${baseApiUrl}/users/${id}`)
+                    const cd_usuario = this.user.cd_usuario
+                    axios.delete(`${baseApiUrl}/api/usuario/${cd_usuario}`)
                         .then(() => {
                             this.$toasted.global.defaultSuccess()
                             this.reset()

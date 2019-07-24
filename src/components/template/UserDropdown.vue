@@ -2,7 +2,7 @@
     <div class="user-dropdown">
         <div class="user-button">
                <div class="user-dropdown-img">
-                <font-awesome-icon icon="user-circle"></font-awesome-icon>
+                <font-awesome-icon icon="sign-out-alt"></font-awesome-icon>
             </div>
             <!-- <span class="d-none d-sm-block">{{ user.name }}</span>
           -->
@@ -10,9 +10,6 @@
         </div>
 
         <div class="user-dropdown-content">
-            <router-link to="/admin" v-if="user.admin">
-                <i class="fa fa-cogs"></i> Administração
-            </router-link>
             <a href @click.prevent="logout">Sair</a>
         </div>        
     </div>
