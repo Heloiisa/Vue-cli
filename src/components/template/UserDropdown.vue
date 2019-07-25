@@ -44,7 +44,7 @@ export default {
         color: #fff;
         font-weight: 100;
         height: 100%;
-        padding: 0px 20px;
+        padding: 0px 0px;
     }
 
     .user-dropdown:hover {

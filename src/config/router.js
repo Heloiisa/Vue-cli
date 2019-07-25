@@ -3,12 +3,14 @@ import VueRouter from 'vue-router'
 
 import Home from '@/components/home/Home'
 import AdminPages from '@/components/admin/AdminPages'
+import AdminEmpresa from '@/components/admin/AdminEmpresa'
 import Login from '@/components/login/Login'
 import EventoAdmin from '@/components/evento/EventoAdmin'
 import ComunicadoAdmin from '@/components/Comunicado/ComunicadoAdmin'
 import GrupoAdmin from '@/components/grupoAcesso/GrupoAdmin'
 import DecodeAdmin from '@/components/utilitarios/DecodeAdmin'
 import InforAdmin from '@/components/configuracoes/InforAdmin'
+
 
 
 
@@ -25,17 +27,23 @@ const routes = [{
     component: Login
 }, {
     name: 'adminPages',
-    path: '/admin',
+    path: '/usuarios',
     component: AdminPages,
     meta: { requiresAdmin: false }
-}, {
- 
+},
+{
+    name: 'adminEmpresas',
+    path: '/empresas',
+    component: AdminEmpresa,
+    meta: { requiresAdmin: false }
+},
+
+{
     name: 'eventoAdmin',
     path: '/evento',
     component: EventoAdmin
 },
 {
- 
     name: 'GrupoAdmin',
     path: '/novogrupo',
     component: GrupoAdmin

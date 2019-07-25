@@ -5,27 +5,24 @@
             <hr>
             <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
 
-            <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome">
-            <input v-model="user.email" name="email" type="text" placeholder="E-mail">
-            <input v-model="user.password" name="password" type="password" placeholder="Senha">
-            <input v-if="showSignup" v-model="user.confirmPassword"
-                type="password" placeholder="Confirme a Senha">
-
-            <button v-b-modal.modalPopover v-if="showSignup" @click="signup" >Registrar</button>
-            <button v-b-modal.modalPopover v-else @click="signin">Entrar</button>
+            <input v-if="showSignup" v-model="user.nm_usuario" type="text" placeholder="Nome">
+            <input v-model="user.nm_email" required name="email" type="text" placeholder="E-mail">
+            <input v-model="user.nm_senha" required name="password" type="password" placeholder="Senha">
+           
+            <button v-b-modal v-if="showSignup" @click="signup" >Registrar</button>
+            <button v-b-modal v-else @click="signin">Entrar</button>
 
             <a href @click.prevent="showSignup = !showSignup">
                 <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
                 <span v-else>Esqueci minha senha</span>
             </a>
-            <div>
-  <b-modal id="modalPopover" title="Comunicado Importante" ok-only>
-
+        <!-- <div>
+   <b-modal id="modalPopover" title="Comunicado Importante" ok-only>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non sem sit amet augue fringilla dignissim. Donec congue metus in dictum molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus.
     </p>
-  </b-modal>
-</div>
+  </b-modal> 
+   </div> -->
         </div>
     </div>
 </template>
@@ -39,21 +36,25 @@ export default {
     data: function() {
         return {
             showSignup: false,
-            user: {}
+            user: {
+                nm_usuario: '',
+               nm_email: '',
+               nm_senha: ''
+            }
         }
     },
     methods: {
         signin() {
-            axios.post(`${baseApiUrl}/signin`, this.user)
+            axios.get(`${baseApiUrl}/api/usuarios`, this.user)
                 .then(res => {
                     this.$store.commit('setUser', res.data)
                     localStorage.setItem(userKey, JSON.stringify(res.data))
-                    this.$router.push({ path: '/' })
+                    this.$router.push({ path: '/home' })
                 })
                 .catch(showError)
         },
         signup() {
-            axios.post(`${baseApiUrl}/signup`, this.user)
+            axios.post(`${baseApiUrl}/api/usuario`, this.user)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.user = {}

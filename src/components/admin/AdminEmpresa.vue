@@ -1,11 +1,11 @@
 <template>
-    <div class="admin-pages">
+    <div class="admin-empresa">
         <PageTitle icon="fa fa-cogs" main="Administração do Sistema" />
         <div class="admin-pages-tabs">
             <b-card no-body>
                 <b-tabs card>
-                    <b-tab title="Cadastro de Usuários">
-                        <UsuarioAdmin />
+                    <b-tab b title="Cadastro de Empresas">
+                        <EmpresaAdmin />
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -15,12 +15,11 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
-import UsuarioAdmin from './UsuarioAdmin'
-
+import EmpresaAdmin from './EmpresaAdmin'
 
 export default {
-    name: 'AdminPages',
-    components: { PageTitle, UsuarioAdmin }
+    name: 'AdminEmpresa',
+    components: { PageTitle, EmpresaAdmin}
 }
 </script>
 
