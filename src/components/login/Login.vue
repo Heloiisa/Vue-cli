@@ -45,7 +45,7 @@ export default {
     },
     methods: {
         signin() {
-            axios.get(`${baseApiUrl}/api/usuarios`, this.user)
+            axios.post(`${baseApiUrl}/api/usuarios`, this.user)
                 .then(res => {
                     this.$store.commit('setUser', res.data)
                     localStorage.setItem(userKey, JSON.stringify(res.data))

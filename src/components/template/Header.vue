@@ -10,7 +10,7 @@
             <li class="nav-item">
                 <a class="nav-link"><p>Último acesso: 12:23</p></a>
             </li>
-            <li class="nav-item px-2">
+            <li class="nav-item px-2" >
                 <a class="nav-link"><font-awesome-icon icon="star"></font-awesome-icon></a>
             </li>
             <li class="nav-item px-2">
@@ -23,7 +23,6 @@
                 <a class="nav-link"> <UserDropdown v-if="!hideUserDropdown" /></a>
             </li>
         </ul>
-
     </header>
 </template>
 

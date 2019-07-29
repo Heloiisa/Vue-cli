@@ -1,6 +1,10 @@
 <template>
     <div class="content">
+        <b-row>
+            <b-col cols="12">
         <router-view></router-view>
+            </b-col>
+        </b-row>
     </div>
 </template>
 

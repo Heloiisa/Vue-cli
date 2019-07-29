@@ -1,4 +1,5 @@
 <template>
+ <b-col cols="6" md="6" lg="12">
     <div class="admin-pages">
         <PageTitle icon="fa fa-cogs" main="Administração do Sistema" />
         <div class="admin-pages-tabs">
@@ -11,6 +12,7 @@
             </b-card>
         </div>
     </div>
+ </b-col>
 </template>
 
 <script>

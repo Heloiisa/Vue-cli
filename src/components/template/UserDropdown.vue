@@ -1,14 +1,11 @@
 <template>
     <div class="user-dropdown">
         <div class="user-button">
-               <div class="user-dropdown-img">
+            <div class="user-dropdown-img">
                 <font-awesome-icon icon="sign-out-alt"></font-awesome-icon>
             </div>
-            <!-- <span class="d-none d-sm-block">{{ user.name }}</span>
-          -->
             <i class="fa fa-angle-down"></i>
         </div>
-
         <div class="user-dropdown-content">
             <a href @click.prevent="logout">Sair</a>
         </div>        

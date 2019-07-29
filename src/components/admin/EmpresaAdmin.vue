@@ -119,7 +119,8 @@
       </div>
     </b-form>
     <hr />
-    <b-table hover striped :items="categories" :fields="fields">
+     <b-col cols="12">
+    <b-table hover striped :items="categories"  :fields="fields">
       <template slot="actions" slot-scope="data">
         <b-button variant="warning" @click="loadCategory(data.item)" class="mr-2">
           <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
@@ -129,6 +130,7 @@
         </b-button>
       </template>
     </b-table>
+     </b-col>
   </div>
 </div>
 </template>
