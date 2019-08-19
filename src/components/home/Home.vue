@@ -12,14 +12,14 @@
                                         <font-awesome-icon icon="paper-plane" size="2x"></font-awesome-icon>
                                     </b-card-text>
                                 </b-col>
-                                <b-col  cols="4">
+                                <b-col cols="4">
                                     <h3 class="center text-light"><b>10</b></h3>
                                 </b-col>
                             </b-row>
                         </b-card>
                     </b-card-group>
                 </b-col>
-                <b-col cols="12"   md="6" xl="3" class="mt-2">
+                <b-col cols="12" md="6" xl="3" class="mt-2">
                     <b-card-group deck>
                         <b-card header="RETORNO" header-tag="header" id="btn-retorno" footer="Saiba mais..." footer-tag="footer">
                             <b-row>
@@ -28,14 +28,14 @@
                                         <font-awesome-icon icon="reply" size="2x"></font-awesome-icon>
                                     </b-card-text>
                                 </b-col>
-                                <b-col cols="4" >
+                                <b-col cols="4">
                                     <h3 class="center text-light"><b>11</b></h3>
                                 </b-col>
                             </b-row>
                         </b-card>
                     </b-card-group>
                 </b-col>
-                <b-col  cols="12" md="6" xl="3" class="mt-2">
+                <b-col cols="12" md="6" xl="3" class="mt-2">
                     <b-card-group deck>
                         <b-card header="CONFIRMAÇÃO" header-tag="header" id="btn-confirmacao" footer="Saiba mais..." footer-tag="footer">
                             <b-row>
@@ -44,14 +44,14 @@
                                         <font-awesome-icon icon="check-square" size="2x"></font-awesome-icon>
                                     </b-card-text>
                                 </b-col>
-                                <b-col cols="4" >
+                                <b-col cols="4">
                                     <h3 class="center text-light"><b>12</b></h3>
                                 </b-col>
                             </b-row>
                         </b-card>
                     </b-card-group>
                 </b-col>
-                <b-col  cols="12" md="6" xl="3" class="mt-2">
+                <b-col cols="12" md="6" xl="3" class="mt-2">
                     <b-card-group deck>
                         <b-card header="DESISTÊNCIA" header-tag="header" id="btn-desistencia" footer="Saiba mais..." footer-tag="footer">
                             <b-row>
@@ -87,7 +87,7 @@
                 </b-col>
             </b-row>
             <br>
-            <b-row >
+            <b-row>
                 <b-col cols="12" md="12">
                     <b-card-group deck>
                         <b-card header="Favoritos" header-tag="header">

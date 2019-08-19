@@ -58,4 +58,5 @@ export default {
     .stat-value {
         font-size: 3rem;
     }
+    
 </style>

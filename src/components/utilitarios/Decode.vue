@@ -20,7 +20,7 @@
         <div class="text-sm-right col-sm3">
             <b-button variant="primary">Enviar</b-button>
         </div>
-                <hr>
+        <hr>
         <b-table hover striped :items="users" :fields="fields">
             <template slot="actions" slot-scope="data">
                 <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
@@ -31,12 +31,12 @@
                 </b-button>
             </template>
         </b-table>
-          <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
+        <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
     </div>
 </template>
 
 <script>
- import {
+    import {
         baseApiUrl, showError
     }
     from '@/global'
@@ -44,82 +44,82 @@
 
     export default {
         data() {
-            return {
-                selected: null,
-                mode: 'save',
-                user: {},
-                users: [],
-                fields: [{
-                    key: 'id',
-                    label: 'Código',
-                    sortable: true
-                }, {
-                    key: 'string',
-                    label: 'String',
-                    sortable: true
-                }, {
-                    key: 'chave',
-                    label: 'Chave',
-                    sortable: true
-                }, {
-                    key: 'decode',
-                    label: 'Decode',
-                    sortable: true,
-                    formatter: value => value ? 'Sim' : 'Não'
-                }, {
-                    key: 'actions',
-                    label: 'Ações'
-                }]
-            }
-        },
-        methods: {
-            loadUsers() {
-                    const url = `${baseApiUrl}/users`
-                    axios.get(url).then(res => {
-                        this.users = res.data
-                    })
-                },
-                reset() {
-                    this.mode = 'save'
-                    this.user = {}
-                    this.loadUsers()
-                },
-                save() {
-                    const method = this.user.id ? 'put' : 'post'
-                    const id = this.user.id ? `/${this.user.id}` : ''
-                    axios[method](`${baseApiUrl}/users${id}`, this.user)
-                        .then(() => {
-                            this.$toasted.global.defaultSuccess()
-                            this.reset()
-                        })
-                        .catch(showError)
-                },
-                remove() {
-                    const id = this.user.id
-                    axios.delete(`${baseApiUrl}/users/${id}`)
-                        .then(() => {
-                            this.$toasted.global.defaultSuccess()
-                            this.reset()
-                        })
-                        .catch(showError)
-                },
-                loadUser(user, mode = 'save') {
-                    this.mode = mode
-                    this.user = {...user
-                    }
+                return {
+                    selected: null,
+                    mode: 'save',
+                    user: {},
+                    users: [],
+                    fields: [{
+                        key: 'id',
+                        label: 'Código',
+                        sortable: true
+                    }, {
+                        key: 'string',
+                        label: 'String',
+                        sortable: true
+                    }, {
+                        key: 'chave',
+                        label: 'Chave',
+                        sortable: true
+                    }, {
+                        key: 'decode',
+                        label: 'Decode',
+                        sortable: true,
+                        formatter: value => value ? 'Sim' : 'Não'
+                    }, {
+                        key: 'actions',
+                        label: 'Ações'
+                    }]
                 }
-        },
-         watch: {
-            page() {
+            },
+            methods: {
+                loadUsers() {
+                        const url = `${baseApiUrl}/users`
+                        axios.get(url).then(res => {
+                            this.users = res.data
+                        })
+                    },
+                    reset() {
+                        this.mode = 'save'
+                        this.user = {}
+                        this.loadUsers()
+                    },
+                    save() {
+                        const method = this.user.id ? 'put' : 'post'
+                        const id = this.user.id ? `/${this.user.id}` : ''
+                        axios[method](`${baseApiUrl}/users${id}`, this.user)
+                            .then(() => {
+                                this.$toasted.global.defaultSuccess()
+                                this.reset()
+                            })
+                            .catch(showError)
+                    },
+                    remove() {
+                        const id = this.user.id
+                        axios.delete(`${baseApiUrl}/users/${id}`)
+                            .then(() => {
+                                this.$toasted.global.defaultSuccess()
+                                this.reset()
+                            })
+                            .catch(showError)
+                    },
+                    loadUser(user, mode = 'save') {
+                        this.mode = mode
+                        this.user = {...user
+                        }
+                    }
+            },
+            watch: {
+                page() {
+                    this.loadArticles()
+                }
+            },
+            mounted() {
+                this.loadUsers()
+                this.loadCategories()
                 this.loadArticles()
             }
-        },
-        mounted() {
-            this.loadUsers()
-            this.loadCategories()
-            this.loadArticles()
-        }
-    }          
+    }
 </script>
 
 <style>

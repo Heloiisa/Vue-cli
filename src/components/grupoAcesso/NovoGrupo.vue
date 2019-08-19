@@ -17,8 +17,7 @@
                                 <b-form-group>
                                     <template slot="label">
                                         <b-form-checkbox v-model="allSelected" :indeterminate="indeterminate" aria-describedby="flavours" aria-controls="flavours" @change="toggleAll">
-                                            {{ allSelected ? 'Usuários' : 'Usuários' }}
-                                            {{ allSelected ? 'Novo Grupo' : 'Novo Grupo' }}
+                                            {{ allSelected ? 'Usuários' : 'Usuários' }} {{ allSelected ? 'Novo Grupo' : 'Novo Grupo' }}
                                         </b-form-checkbox>
                                     </template>
                                     <b-form-checkbox-group id="flavors" v-model="selected" :options="flavours" name="flavors" class="ml-4" aria-label="Individual flavours" stacked></b-form-checkbox-group>
@@ -35,14 +34,9 @@
                             <b-nav-item>Comunicados</b-nav-item>
                         </b-nav>
                         <b-card-body id="nav-scroller" ref="content" style="position:relative; height:300px; overflow-y:scroll;">
-                        <b-form-group>
-                        <b-form-checkbox-group
-                            v-model="selected"
-                            :options="options"
-                            name="flavour-2a"
-                            stacked
-                        ></b-form-checkbox-group>
-                        </b-form-group>
+                            <b-form-group>
+                                <b-form-checkbox-group v-model="selected" :options="options" name="flavour-2a" stacked></b-form-checkbox-group>
+                            </b-form-group>
                         </b-card-body>
                     </b-card>
                 </div>
@@ -74,17 +68,20 @@
                     selected: [],
                     allSelected: false,
                     indeterminate: false,
-        options: [
-          { text: 'Cadastrar', value: 'cad' },
-          { text: 'Editar', value: 'edit' },
-        ]
+                    options: [{
+                        text: 'Cadastrar',
+                        value: 'cad'
+                    }, {
+                        text: 'Editar',
+                        value: 'edit'
+                    }, ]
                 }
             },
             methods: {
                 toggleAll(checked) {
-                    this.selected = checked ? this.flavours.slice() : []
-                },
-                
+                        this.selected = checked ? this.flavours.slice() : []
+                    },
+
             }
     }
 </script>

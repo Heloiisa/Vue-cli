@@ -14,14 +14,15 @@
 </template>
 
 <script>
-import PageTitle from '../template/PageTitle'
-import Eventos from './Eventos'
+    import PageTitle from '../template/PageTitle'
+    import Eventos from './Eventos'
 
-
-export default {
-    name: 'EventoAdmin',
-    components: { PageTitle, Eventos }
-}
+    export default {
+        name: 'EventoAdmin',
+        components: {
+            PageTitle, Eventos
+        }
+    }
 </script>
 
 <style>

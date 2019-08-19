@@ -41,31 +41,28 @@
             </b-row>
             <b-row>
                 <b-col md="6" sm="12">
-                        <b-form-group label="Usuário Ativo:" label-for="idEmpresaTipo">
-                            <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
-                        </b-form-group>
-                    </b-col>
+                    <b-form-group label="Usuário Ativo:" label-for="idEmpresaTipo">
+                        <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
+                    </b-form-group>
+                </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="Pertence a Empresa:" label-for="idEmpresaTipo">
                         <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
                     </b-form-group>
-                </b-col>      
-            </b-row>        
+                </b-col>
+            </b-row>
             <b-row>
                 <b-col md="6" sm="12">
-                        <b-form-group label="Acesso a URL:" label-for="idEmpresaTipo">
-                            <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
-                        </b-form-group>
+                    <b-form-group label="Acesso a URL:" label-for="idEmpresaTipo">
+                        <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
+                    </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="Tipo Usuário:" label-for="idEmpresaTipo">
                         <b-form-select id="idEmpresaTipo" :options="options" v-model="selected" />
                     </b-form-group>
-                </b-col>      
-            </b-row>  
-
-
-
+                </b-col>
+            </b-row>
 
             <b-form-checkbox id="user-admin" v-show="mode === 'save'" v-model="user.nm_usuario1" class="mt-3 mb-3">
                 Administrador
@@ -84,10 +81,10 @@
         <b-table hover striped :items="users" :fields="fields">
             <template slot="actions" slot-scope="data">
                 <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
-                     <font-awesome-icon icon="pencil-alt" ></font-awesome-icon>
+                    <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                 </b-button>
                 <b-button variant="danger" @click="loadUser(data.item, 'remove')">
-                     <font-awesome-icon icon="trash-alt" ></font-awesome-icon>
+                    <font-awesome-icon icon="trash-alt"></font-awesome-icon>
                 </b-button>
             </template>
         </b-table>
@@ -106,12 +103,12 @@
         data: function() {
             return {
                 user: {
-                nm_usuario:'',
-                nm_email:'',
-                nm_senha:'',
-                nr_cpf:'',
+                    nm_usuario: '',
+                    nm_email: '',
+                    nm_senha: '',
+                    nr_cpf: '',
                 },
-                 mode: 'save',
+                mode: 'save',
                 users: [],
                 fields: [{
                     key: 'cd_usuario',

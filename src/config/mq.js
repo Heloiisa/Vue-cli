@@ -9,4 +9,5 @@ Vue.use(VueMq, {
         lg: 1140,
         xl: Infinity
     }
+    
 })

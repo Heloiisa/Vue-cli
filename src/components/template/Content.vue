@@ -2,16 +2,16 @@
     <div class="content">
         <b-row>
             <b-col cols="12">
-        <router-view></router-view>
+                <router-view></router-view>
             </b-col>
         </b-row>
     </div>
 </template>
 
 <script>
-export default {
-    name: 'Content'
-}
+    export default {
+        name: 'Content'
+    }
 </script>
 
 <style>

@@ -5,7 +5,6 @@
             <hr>
             <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
 
-            <input v-if="showSignup" v-model="user.nm_usuario" type="text" placeholder="Nome">
             <input v-model="user.nm_email" required name="email" type="text" placeholder="E-mail">
             <input v-model="user.nm_senha" required name="password" type="password" placeholder="Senha">
            
@@ -16,13 +15,6 @@
                 <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
                 <span v-else>Esqueci minha senha</span>
             </a>
-        <!-- <div>
-   <b-modal id="modalPopover" title="Comunicado Importante" ok-only>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non sem sit amet augue fringilla dignissim. Donec congue metus in dictum molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-    </p>
-  </b-modal> 
-   </div> -->
         </div>
     </div>
 </template>

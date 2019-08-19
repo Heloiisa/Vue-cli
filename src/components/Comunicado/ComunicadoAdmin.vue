@@ -14,14 +14,15 @@
 </template>
 
 <script>
-import PageTitle from '../template/PageTitle'
-import Comunicado from './Comunicado'
+    import PageTitle from '../template/PageTitle'
+    import Comunicado from './Comunicado'
 
-
-export default {
-    name: 'ComunicadoAdmin',
-    components: { PageTitle, Comunicado }
-}
+    export default {
+        name: 'ComunicadoAdmin',
+        components: {
+            PageTitle, Comunicado
+        }
+    }
 </script>
 
 <style>

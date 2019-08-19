@@ -14,13 +14,15 @@
 </template>
 
 <script>
-import PageTitle from '../template/PageTitle'
-import EmpresaAdmin from './EmpresaAdmin'
+    import PageTitle from '../template/PageTitle'
+    import EmpresaAdmin from './EmpresaAdmin'
 
-export default {
-    name: 'AdminEmpresa',
-    components: { PageTitle, EmpresaAdmin}
-}
+    export default {
+        name: 'AdminEmpresa',
+        components: {
+            PageTitle, EmpresaAdmin
+        }
+    }
 </script>
 
 <style>

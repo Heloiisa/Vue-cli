@@ -8,6 +8,7 @@ import './config/msgs'
 import './config/axios'
 import './config/mq'
 
+
 import store from './config/store'
 import router from './config/router'
 

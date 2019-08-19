@@ -14,14 +14,15 @@
 </template>
 
 <script>
-import PageTitle from '../template/PageTitle'
-import Decode from './Decode'
+    import PageTitle from '../template/PageTitle'
+    import Decode from './Decode'
 
-
-export default {
-    name: 'DecodeAdmin',
-    components: { PageTitle, Decode }
-}
+    export default {
+        name: 'DecodeAdmin',
+        components: {
+            PageTitle, Decode
+        }
+    }
 </script>
 
 <style>

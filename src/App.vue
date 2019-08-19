@@ -53,4 +53,5 @@ export default {
 			"content content"
 			"footer footer";
 	}
+	
 </style>

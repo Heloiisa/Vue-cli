@@ -7,17 +7,17 @@
 </template>
 
 <script>
-export default {
-    name: 'PageTitle',
-    props: ['icon', 'main', 'sub']
-}
+    export default {
+        name: 'PageTitle',
+        props: ['icon', 'main', 'sub']
+    }
 </script>
 
 <style>
     .page-title h1 {
         margin: 0px;
     }
-
+    
     .page-title h2 {
         color: #777;
         margin-top: 5px;

@@ -14,13 +14,15 @@
 </template>
 
 <script>
-import PageTitle from '../template/PageTitle'
-import InforGerais from './InforGerais'
+    import PageTitle from '../template/PageTitle'
+    import InforGerais from './InforGerais'
 
-export default {
-    name: 'InforAdmin',
-    components: { PageTitle, InforGerais }
-}
+    export default {
+        name: 'InforAdmin',
+        components: {
+            PageTitle, InforGerais
+        }
+    }
 </script>
 
 <style>
